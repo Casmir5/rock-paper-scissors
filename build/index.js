@@ -103,8 +103,8 @@ const gameReset = function () {
   overlayEl.classList.add('hidden');
   modalEl.classList.add('bg-emerald-600');
   modalMesssage.textContent = 'congratulation You won 🥳🎊';
-  playerValue.src = `../public/right/value-1.png`;
-  computerValue.src = `../public/left/value-1.png`;
+  playerValue.src = `public/right/value-1.png`;
+  computerValue.src = `public/left/value-1.png`;
   init();
 };
 const goBack = function () {
@@ -112,8 +112,8 @@ const goBack = function () {
   overlayEl.classList.add('hidden');
   modalEl.classList.add('bg-emerald-600');
   modalMesssage.textContent = 'congratulation You won 🥳🎊';
-  playerValue.src = `../public/right/value-1.png`;
-  computerValue.src = `../public/left/value-1.png`;
+  playerValue.src = `public/right/value-1.png`;
+  computerValue.src = `public/left/value-1.png`;
   document.querySelector('.first-page').classList.remove('hidden');
   document.querySelector('.second-page').classList.add('hidden');
   init();
@@ -144,8 +144,8 @@ for (const [i, btn] of buttons.entries()) {
       computerRand = Math.trunc(Math.random() * 3) + 1;
       console.log(playerRand, computerRand);
 
-      playerValue.src = `../public/right/value-${playerRand}.png`;
-      computerValue.src = `../public/left/value-${computerRand}.png`;
+      playerValue.src = `public/right/value-${playerRand}.png`;
+      computerValue.src = `public/left/value-${computerRand}.png`;
       message.classList.remove('hidden');
       const randomMessageWhenUserWins = getRandomValueFromArray(messageCorrect);
       const randomMessageWhenUserlose = getRandomValueFromArray(messageWrong);

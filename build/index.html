@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock,papper,scissors</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-pink-200">
+
+  <main class=" flex justify-center items-center relative h-screen">
+
+    <section
+      class="w-full mx-2 md:w-1/2 lg:1/2 xl:1/2  bg-slate-100 px-10 py-14 flex flex-col justify-center first-page">
+      <h2 class="text-center text-2xl uppercase">welcome to the game of Idans</h2>
+      <!-- <h4 class="text-center capitalize text-lg ">How good are you in rock,papper scissors</h4> -->
+      <p class="text-center my-5 intro">Welcome to the thrilling word of Rock,paper,Scissors! Test your
+        strategy,intuition,and
+        luck in this timeless season.brace yourself for epic battle where simple hand gestures hold the key to
+        victory.choose wisely and let the battle begin🥳<br>
+        <span class="text-xl">#Rule</span> : first player to reach <b class="text-lg">7</b> wins;
+      </p>
+      <p class="text-center my-5 intro">Chose how you want the values to be generated</p>
+      <div class="flex flex-col items-center gap-5">
+        <div class="w-full"><button id="user-chose" class=" w-full flex-1 bg-blue-800 py-2  text-slate-100">select
+            myself</button>
+        </div>
+        <div class="w-full"><button id="computer-chose" class="w-full flex-1 bg-blue-800 py-2 text-slate-100">Generate
+            randomly </button></div>
+      </div>
+    </section>
+
+    <section class="flex-col w-full mx-2 md:w-1/2 lg:1/2 xl:1/2   bg-slate-100 px-10 py-14 second-page hidden  ">
+      <div class="flex justify-between mb-10">
+        <h2 class="flex flex-col text-2xl gap-5">You <span class="text-center text-4xl text-emerald-600"
+            id="player-score">
+            0</span></h2>
+        <h2 class="flex flex-col text-2xl gap-5">Computer<span class="text-center text-4xl text-red-600"
+            id="computer-score">0</span></h2>
+      </div>
+      <div class="message border-2 text-center mt-10 p-5  hidden">
+      </div>
+      <div class="flex justify-between mb-5 mt-20">
+        <div class="img-wrap w-36">
+          <img class="w-full" id="player-value" src="../img/right/value(1).PNG" alt="img">
+        </div>
+        <div class="img-wrap w-36">
+          <img class="w-full" id="computer-value" src="../img/left/value(1).PNG" alt="img">
+        </div>
+      </div>
+      <div class="flex justify-between w-full ">
+        <button id="rock" class="bg-pink-400 text-slate-800 text-center py-2 w-1/4 game-values">Rock</button>
+        <button id="papper" class="bg-pink-400 text-slate-800 text-center py-2 w-1/4 game-values">Papper</button>
+        <button id="scissors" class="bg-pink-400 text-slate-800 text-center py-2 w-1/4 game-values">Scissor</button>
+      </div>
+      <div class="w-full">
+        <button class="w-full bg-yellow-500 text-slate-800  text-center py-1 generate">Generate</button>
+      </div>
+
+    </section>
+    </div>
+
+    <section
+      class="modal absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  w-full mx-2 md:w-2/5  bg-emerald-600 text-white z-10 p-10 text-center  hidden ">
+      <h2 class="text-2xl end-messsage">congratulation You won 🥳🎊</h2>
+      <!-- <p class="text-lg pt-6">wha</p> -->
+      <div class="flex justify-center mt-10 gap-3">
+        <div>
+          <button id="main-menu"
+            class="bg-yellow-500 border-2 border-yellow-500 px-6 py-2  hover:bg-slate-200  hover:border-yellow-500 hover:text-yellow-500">Main
+            Menu</button>
+        </div>
+        <div>
+          <button id="restart"
+            class=" restart bg-red-700 border-red-700 border-2 px-6 py-2 hover:bg-slate-200  hover:border-red-700 hover:text-red-700">Restart
+            Game</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="overlay absolute top-0 left-0 w-full h-full hidden"></section>
+  </main>
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>

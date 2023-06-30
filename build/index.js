@@ -99,6 +99,8 @@ const userlostModal = function () {
 const gameReset = function () {
   modalEl.classList.add('hidden');
   overlayEl.classList.add('hidden');
+  modalEl.classList.remove('user-lost');
+  modalEl.classList.remove('bg-emerald-600');
   modalEl.classList.add('bg-emerald-600');
   modalMesssage.textContent = 'congratulation You won 🥳🎊';
   playerValue.src = `./images/right/value-1.png`;
@@ -114,6 +116,9 @@ const goBack = function () {
   computerValue.src = `./images/left/value-1.png`;
   document.querySelector('.first-page').classList.remove('hidden');
   document.querySelector('.second-page').classList.add('hidden');
+  for (const [i, btn] of buttons.entries()) {
+    btn.classList.remove('hidden');
+  }
   init();
 };
 

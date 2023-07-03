@@ -143,6 +143,7 @@ for (const [i, btn] of buttons.entries()) {
       } else {
         randomNumberForUser = Math.trunc(Math.random() * 3) + 1;
       }
+      randNumberForComputer = Math.trunc(Math.random() * 3) + 1;
       playerValue.src = `./images/right/value-${randomNumberForUser}.png`;
       computerValue.src = `./images/left/value-${randNumberForComputer}.png`;
       message.classList.remove('hidden');

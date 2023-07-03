@@ -11,29 +11,33 @@ const restart = document.querySelector('#restart');
 const modalMesssage = document.querySelector('.end-messsage');
 const buttons = document.querySelectorAll('.second-page button');
 const generateBtn = document.querySelector('.generate');
-const userChose = document.querySelector('#user-chose');
-const computerChose = document.querySelector('#computer-chose');
+const selectMyselfBtn = document.querySelector('#user-chose');
+const generateRandomlybtn = document.querySelector('#computer-chose');
 const gameValues = document.querySelectorAll('.game-values');
-console.log(modalEl, overlayEl);
 
-userChose.addEventListener('click', function () {
+let randomNumberForUser,
+  randNumberForComputer,
+  playerScore,
+  computerScore,
+  isPlaying;
+
+selectMyselfBtn.addEventListener('click', function () {
   document.querySelector('.first-page').classList.add('hidden');
   document.querySelector('.second-page').classList.remove('hidden');
   generateBtn.classList.add('hidden');
 });
-computerChose.addEventListener('click', function () {
+generateRandomlybtn.addEventListener('click', function () {
   document.querySelector('.first-page').classList.add('hidden');
   document.querySelector('.second-page').classList.remove('hidden');
   for (const [i, value] of gameValues.entries()) {
     value.classList.add('hidden');
   }
 });
+
 function getRandomValueFromArray(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
 }
-
-let playerRand, computerRand, playerScore, computerScore, isPlaying;
 const messageCorrect = [
   'Taar commot body joor🥶',
   'sodiki🤯',
@@ -52,12 +56,11 @@ const messageWrong = [
   'Loser 😂',
   'Give up already loser🤣',
 ];
-// const randomMessageWhenUserWins = getRandomValueFromArray(messageCorrect);
 
 const init = function () {
   isPlaying = false;
-  playerRand = 0;
-  computerRand = 0;
+  randomNumberForUser = 0;
+  randNumberForComputer = 0;
   playerScore = 0;
   computerScore = 0;
 
@@ -66,7 +69,6 @@ const init = function () {
   message.textContent = '';
   message.classList.add('hidden');
 };
-console.log(playerScore, computerScore);
 const displayScore = function () {
   playerScoreEl.textContent = playerScore;
   computerScoreEl.textContent = computerScore;
@@ -85,6 +87,7 @@ const guessedWrong = function () {
 const userwinsModal = function () {
   modalEl.classList.remove('hidden');
   overlayEl.classList.remove('hidden');
+  modalEl.classList.add('bg-emerald-600');
 };
 
 const userlostModal = function () {
@@ -99,12 +102,11 @@ const userlostModal = function () {
 const gameReset = function () {
   modalEl.classList.add('hidden');
   overlayEl.classList.add('hidden');
-  modalEl.classList.remove('user-lost');
-  modalEl.classList.remove('bg-emerald-600');
   modalEl.classList.add('bg-emerald-600');
   modalMesssage.textContent = 'congratulation You won 🥳🎊';
   playerValue.src = `./images/right/value-1.png`;
   computerValue.src = `./images/left/value-1.png`;
+  modalEl.classList.remove('user-lost');
   init();
 };
 const goBack = function () {
@@ -124,67 +126,56 @@ const goBack = function () {
 
 init();
 
-// goodmessage = [good, great, idan, starboy];
 for (const [i, btn] of buttons.entries()) {
   btn.addEventListener('click', function (e) {
     isPlaying = true;
-    console.log(isPlaying);
     message.classList.remove('tied');
     message.classList.remove('right-message');
     message.classList.remove('wrong-message');
     displayScore();
     if (isPlaying) {
-      console.log(e.target.id);
       if (e.target.id === 'rock') {
-        playerRand = 1;
+        randomNumberForUser = 1;
       } else if (e.target.id === 'papper') {
-        playerRand = 2;
+        randomNumberForUser = 2;
       } else if (e.target.id === 'scissors') {
-        playerRand = 3;
+        randomNumberForUser = 3;
       } else {
-        playerRand = Math.trunc(Math.random() * 3) + 1;
+        randomNumberForUser = Math.trunc(Math.random() * 3) + 1;
       }
-      computerRand = Math.trunc(Math.random() * 3) + 1;
-      console.log(playerRand, computerRand);
-
-      playerValue.src = `./images/right/value-${playerRand}.png`;
-      computerValue.src = `./images/left/value-${computerRand}.png`;
+      playerValue.src = `./images/right/value-${randomNumberForUser}.png`;
+      computerValue.src = `./images/left/value-${randNumberForComputer}.png`;
       message.classList.remove('hidden');
       const randomMessageWhenUserWins = getRandomValueFromArray(messageCorrect);
       const randomMessageWhenUserlose = getRandomValueFromArray(messageWrong);
-      if (playerRand === computerRand) {
+      if (randomNumberForUser === randNumberForComputer) {
         message.textContent = 'tied👀';
         message.classList.add('tied');
       }
-
       // if player = scissors and computer = rock
-      else if (playerRand === 3 && computerRand === 1) {
+      else if (randomNumberForUser === 3 && randNumberForComputer === 1) {
         message.textContent = randomMessageWhenUserlose;
         guessedWrong();
       }
       // if computer = scissors and player = rock
-      else if (computerRand === 3 && playerRand === 1) {
+      else if (randNumberForComputer === 3 && randomNumberForUser === 1) {
         message.textContent = randomMessageWhenUserWins;
         guessedRight();
-      } else if (playerRand > computerRand) {
+      } else if (randomNumberForUser > randNumberForComputer) {
         message.textContent = randomMessageWhenUserWins;
         guessedRight();
-      } else if (computerRand > playerRand) {
+      } else if (randNumberForComputer > randomNumberForUser) {
         message.textContent = randomMessageWhenUserlose;
         guessedWrong();
       }
-      console.log(computerScore, playerScore);
       displayScore();
     }
     if (playerScore > computerScore && playerScore === 7) {
-      console.log('you win hurray🎉🎊');
-      userwinsModal();
       isPlaying = false;
+      userwinsModal();
     } else if (computerScore > playerScore && computerScore === 7) {
-      console.log('gameover , U lost 😶');
       isPlaying = false;
       userlostModal();
-    } else {
     }
   });
 }

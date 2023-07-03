@@ -33,9 +33,9 @@ body {
 }
 .tied {
   @apply border-yellow-500 bg-yellow-200 text-yellow-600;
-  /* background-color:; */
 }
 
+/* styling all buttons expect modal's button */
 #user-chose,
 #computer-chose,
 .game-values,
